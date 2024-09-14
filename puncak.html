@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Puncak</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body,
+        html {
+            font-family: 'Arial', sans-serif;
+            height: 100%;
+            scroll-behavior: smooth;
+        }
+        
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.7);
+            /* Transparent background */
+            z-index: 10;
+        }
+        
+        nav .logo img {
+            width: 50px;
+        }
+        
+        nav ul {
+            list-style: none;
+            display: flex;
+            transition: transform 0.3s ease;
+        }
+        
+        nav ul li {
+            margin-left: 20px;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            padding: 10px;
+            transition: color 0.3s ease;
+        }
+        
+        nav ul li a:hover {
+            color: #4CAF50;
+            /* Hover color */
+        }
+        /* Burger Menu Styling */
+        
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            font-size: 24px;
+            color: white;
+        }
+        
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            max-width: 90%;
+            margin: 0 auto;
+            margin-bottom: 10px;
+            margin-top: 100px;
+        }
+        
+        .gallery img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        @media(max-width: 768px) {
+            .gallery {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media(max-width: 480px) {
+            .gallery {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        #footer {
+            background-color: #f9f9f9;
+            padding: 20px 0;
+            border-top: 1px solid #ddd;
+        }
+        
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+        /* Left side styles */
+        
+        .footer-left h3 {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin: 0;
+            display: flex;
+            align-items: center;
+        }
+        
+        .footer-left h3 img.footer-icon {
+            width: 20px;
+            margin-right: 10px;
+        }
+        
+        .footer-left h3 span {
+            color: #000;
+        }
+        
+        .footer-left a {
+            font-size: 0.9rem;
+            color: #000;
+            margin-top: 5px;
+        }
+        
+        .footer-right {
+            display: flex;
+        }
+        /* Footer Navigation */
+        
+        .footer-nav {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            gap: 20px;
+        }
+        
+        .footer-nav li {
+            display: inline;
+        }
+        
+        .footer-nav a {
+            text-decoration: none;
+            font-size: 0.9rem;
+            color: #333;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-nav a:hover {
+            color: #4CAF50;
+        }
+        /* Responsive Footer */
+        
+        @media screen and (max-width: 768px) {
+            .footer-container {
+                flex-direction: column;
+                align-items: flex-start;
+                /* Align everything to the left */
+                padding: 10px 20px;
+            }
+            .footer-right {
+                margin-bottom: 10px;
+                /* Links will be on top, with some spacing below */
+            }
+            .footer-nav {
+                flex-direction: column;
+                gap: 10px;
+            }
+            .footer-nav li {
+                display: block;
+            }
+            .footer-left {
+                margin-top: 10px;
+            }
+        }
+        /* Responsive Design */
+        
+        @media (max-width: 768px) {
+            /* Hide the regular nav and show the burger icon */
+            .nav-links {
+                position: fixed;
+                top: 60px;
+                right: 0;
+                height: 100vh;
+                width: 100%;
+                background-color: rgba(0, 0, 0, 0.9);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                transform: translateX(100%);
+            }
+            .nav-links.active {
+                transform: translateX(0);
+            }
+            .nav-links li {
+                margin: 20px 0;
+                text-align: center;
+            }
+            .hamburger {
+                display: block;
+            }
+        }
+        
+        .btn {
+            background-color: #04AA6D;
+            /* Green */
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <div class="logo">
+            <img src="assets/bendera.png" alt="Logo" />
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html">Beranda</a></li>
+            <li><a href="index.html#kenya-info">Tentang</a></li>
+            <li><a href="informasi.html">Informasi</a></li>
+            <li><a href="anggota.html">Anggota</a></li>
+            <li><a href="galeri.html">Galeri</a></li>
+        </ul>
+        <div class="hamburger">
+            &#9776;
+        </div>
+    </nav>
+    <div class="gallery">
+        <img src="puncak/f2.jpg" alt="Photo 1">
+        <img src="puncak/f3.jpg" alt="Photo 1">
+        <img src="puncak/f4.jpg" alt="Photo 1">
+        <img src="puncak/f5.jpg" alt="Photo 1">
+        <img src="puncak/f6.jpg" alt="Photo 1">
+        <img src="puncak/f7.jpg" alt="Photo 1">
+        <span>
+        <a href="https://drive.google.com/drive/folders/1S0r7n1aqhUIHq0ZbQUDkMZhEPoSTajoI" class="btn"> Lihat Semua</a>
+
+        </span>
+    </div>
+    <footer id="footer">
+        <div class="footer-container">
+            <div class="footer-right">
+                <ul class="footer-nav">
+                    <li><a href="#">Beranda</a></li>
+                    <li><a href="#kenya-info">Tentang</a></li>
+                    <li><a href="informasi.html">Informasi</a></li>
+                    <li><a href="anggota.html">Anggota</a></li>
+                    <li><a href="galeri.html">Galeri</a></li>
+                </ul>
+            </div>
+            <div class="footer-left">
+                <a href="https://www.instagram.com/kenyarawr/" style="text-decoration: none;">
+                    <h3><img src="assets/instagram.png" alt="Instagram" class="footer-icon"><span>Kenya</span></h3>
+                </a>
+                <a href="https://mramdhan.github.io/Portfolio-V2/#" style="text-decoration: none; color: #000;" target="_blank">&copy; 2024 by Ramdhan Irawan.</a>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
